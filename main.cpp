@@ -38,15 +38,16 @@ int main() {
         try {
             cout << Server::compute(A, B) << endl;
         } 
-        catch(invalid_argument e) 
+        catch(bad_alloc& e)
         {
-            cout << "Exception: "<< e.what() << endl;
+            cout << "Not enough memory" << endl;
         }
-        catch(bad_alloc e)
+        catch(exception& e)
         {
-            cout << "Not enough memory"<< endl;
+            cout << "Exception: ";
+            cout << e.what() << endl;
         }
-        catch(exception e)
+        catch(int e)
         {
             cout << "Other Exception" << endl;
         }
